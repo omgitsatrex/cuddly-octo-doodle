@@ -44,12 +44,14 @@ body {
   .content {
     background-color: #ddd;
     padding: 10px;
-    height: 200px; /* Should be removed. Only for demonstration */
+    /*height: 200px; /* Should be removed. Only for demonstration */
   }
   
   /* Style the footer */
   .footer {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1;    
+    margin-left: 200px;
+    padding-left: 20px;
     padding: 10px;
   }
 
