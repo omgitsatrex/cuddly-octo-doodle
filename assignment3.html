@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        $(document).ready(function () {
+            $('#yourphone').usPhoneFormat({
+                format: '(xxx) xxx-xxxx',
+            });
+            
+            $('#yourphone2').usPhoneFormat();
+        });
+    </script>
+    <script src="https://unpkg.com/jquery-input-mask-phone-number@1.0.15/dist/jquery-input-mask-phone-number.js">
+        $(document).ready(function () {
+            $('#yourphone').usPhoneFormat({
+                format: '(xxx) xxx-xxxx',
+            });
+            
+            $('#yourphone2').usPhoneFormat();
+        });
+    </script>
 </head>
 <body>
     <div class="sidenav">
@@ -30,6 +48,78 @@
         <h1>Assignment 3: Form Validation</h1>
         <a href="https://roneaglin.online/cop4813/home/assignments/assignment-3/">Instructions</a>
         <hr>
+        <form name="inputForm" onsubmit="return ValidateForm();" method="post" action="mailto:elliot_culbertson@daytonastate.edu">
+        <label for="">
+            First Name: <input type="text" name="fname" placeholder="John"/>
+            Last Name: <input type="text" name="lname" placeholder="Doe"/></label><br><br>
+        <label for="">
+            Street Address: <input type="text" name="streetName"/>
+            City: <input type="text" name="cityName"/> 
+            State: 
+            <select name="stateName">
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+            </select>
+            Zipcode: <input type="text" name="zipcode" maxlength="5" size="5"/>
+        </label><br><br>
+        <label for="">
+            Phone #: <input type="text" name="areaCode" maxlength="3" size="3">
+             - <input type="text" name="prefixCode" maxlength="3" size="3">
+             - <input type="text" name="lineNumber" maxlength="4" size="4">
+        </label>
+        <label for="">
+            Phone #: <input type="text" name="phoneNumber" id="yourphone2">
+        </label>
+        </form>
     </div>
     <div class="footer">
         Created by Elliot Culbertson
