@@ -85,6 +85,16 @@
             if(!validateLength(phoneNumber, 12, "Phone Number")){
                 return false;
             }
+
+            var birthDate = document.forms["inputForm"]["birthDate"].value;
+            if (!validateNotBlank(birthDate, "Birth Date")){
+                return false;
+            };
+
+            if (!validateDate(birthDate)){
+                return false;
+            }
+            return true;
         }
 
         function validateNotBlank(value, label){
@@ -101,7 +111,7 @@
             var isValid = regex.test(value);
 
             if (!isValid) {
-            alert("Only Alphabets allowed in " + label);
+            alert("Only Letters allowed in " + label);
             }
 
             return isValid;
@@ -134,6 +144,15 @@
         function validateLength(value, length, label){
             if(value.length < length){
                 alert("Insufficent data for " + label);
+                return false;
+            }
+            return true;
+        }
+
+        function validateDate(value){
+            var today = new Date();
+            if(value > today){
+                alert("The date entered is after today");
                 return false;
             }
             return true;
