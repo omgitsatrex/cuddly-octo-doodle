@@ -24,12 +24,116 @@
 
         function ValidateForm(){
             var fname = document.forms["inputForm"]["fname"].value;
-            return validateNotBlank(fname, "First Name");
+            if (!validateNotBlank(fname, "First Name")){
+                return false;
+            };
+            
+            if (!validateLettersOnly(fname, "First Name")){
+                return false;
+            };
+
+            var lname = document.forms["inputForm"]["lname"].value;
+            if (!validateNotBlank(lname, "First Name")){
+                return false;
+            };
+            
+            if (!validateLettersOnly(lname, "First Name")){
+                return false;
+            };
+
+            var streetName = document.forms["inputForm"]["streetName"].value;
+            if (!validateNotBlank(streetName, "Street Address")){
+                return false;
+            };
+
+            if (!validateStreet(streetName, "Street Address")){
+                return false;
+            };
+
+            var cityName = document.forms["inputForm"]["cityName"].value;
+            if (!validateNotBlank(cityName, "City Name")){
+                return false;
+            };
+
+            if (!validateLettersOnly(cityName, "City Name")){
+                return false;
+            };
+
+            var stateName = document.forms["inputForm"]["stateName"].value;
+            if (!validateNotBlank(stateName, "State Name")){
+                return false;
+            };
+
+            var zipcode = document.forms["inputForm"]["zipcode"].value;
+            if (!validateNotBlank(zipcode, "Zipcode")){
+                return false;
+            };
+
+            if (!validateNumbersOnly(zipcode, "Zipcode")){
+                return false;
+            };
+
+            if(!validateLength(zipcode, 5, "Zipcode")){
+                return false;
+            }
+
+            var phoneNumber = document.forms["inputForm"]["phoneNumber"].value;
+            if (!validateNotBlank(phoneNumber, "Phone Number")){
+                return false;
+            };
+
+            if(!validateLength(phoneNumber, 12, "Phone Number")){
+                return false;
+            }
         }
 
         function validateNotBlank(value, label){
             if(value==null || value==""){
                 alert("Please enter a value for " + label);
+                return false;
+            }
+            return true;
+        }
+
+        function validateLettersOnly(value, label){
+            var regex = /^[A-Za-z]+$/
+
+            var isValid = regex.test(value);
+
+            if (!isValid) {
+            alert("Only Alphabets allowed in " + label);
+            }
+
+            return isValid;
+        }
+
+        function validateNumbersOnly(value, label){
+            var regex = /^[0-9]+$/
+
+            var isValid = regex.test(value);
+
+            if (!isValid) {
+            alert("Only Numbers allowed in " + label);
+            }
+
+            return isValid;
+        }
+
+        function validateStreet(value, label){
+            var regex = /^(([A-Z])*(\d+)([A-Z])*)(-|\/|&)*(([A-Z])*(\d+)([A-Z])*)*((\/)*(([A-Z])*(\d+)([A-Z])*))*/
+               
+            var isValid = regex.test(value);
+
+            if (!isValid) {
+            alert("Improper format of " + label);
+            }
+
+            return isValid;
+        }
+
+        function validateLength(value, length, label){
+            if(value.length < length){
+                alert("Insufficent data for " + label);
                 return false;
             }
             return true;
@@ -70,6 +174,7 @@
                 City: <input type="text" name="cityName"/>
                 State: 
                 <select name="stateName">
+                    <option value="">--</option>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
                     <option value="AZ">AZ</option>
