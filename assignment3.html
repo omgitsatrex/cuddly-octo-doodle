@@ -93,6 +93,15 @@
 
             if (!validateDate(birthDate)){
                 return false;
+            }            
+
+            var currentPresident = document.forms["inputForm"]["currentPresident"].value;
+            if (!validateNotBlank(currentPresident, "CAPTCHA")){
+                return false;
+            };
+
+            if(!validateCaptcha(currentPresident)){
+                return false;
             }
             return true;
         }
@@ -150,9 +159,20 @@
         }
 
         function validateDate(value){
+            var d_as_date = Date.parse(value)
             var today = new Date();
-            if(value > today){
+
+            if(d_as_date > today){
                 alert("The date entered is after today");
+                return false;
+            }
+            return true;
+        }
+
+        function validateCaptcha(value){
+            var x = value.toUpperCase();
+            if(x != "BIDEN"){
+                alert("CAPTCHA is incorrect");
                 return false;
             }
             return true;
