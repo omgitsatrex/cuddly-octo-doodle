@@ -13,8 +13,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uranium23-H5</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        var movie = [
+            {"name":"Spirited Away", "rating":"PG", "runtime":"2 hr. 15 min."},
+            {"name":"The Many Saints of Newark", "rating":"R", "runtime":"2 hr. 0 min."},
+            {"name":"The Addams Family 2", "rating":"PG", "runtime":"1 hr. 33 min."},
+            {"name":"Venom: Let There Be Carnage", "rating":"PG13", "runtime":"1 hr. 30 min."},
+            {"name":"Dear Evan Hansen", "rating":"PG13", "runtime":"2 hr. 17 min."},
+            {"name":"The Eyes of Tammy Faye", "rating":"PG13", "runtime":"2 hr. 6 min."},
+            {"name":"Shang-Chi and the Legend of the Ten Rings", "rating":"PG13", "runtime":"2 hr. 12min."},
+            {"name":"Free Guy", "rating":"PG13", "runtime":"1 hr. 55 min."}
+        ]; 
+
+        movie[1].name;
+    </script>
 </head>
 <body>
+    <script>
+        var movie = [
+            {"name":"Spirited Away", "rating":"PG", "runtime":"2 hr. 15 min."},
+            {"name":"The Many Saints of Newark", "rating":"R", "runtime":"2 hr. 0 min."},
+            {"name":"The Addams Family 2", "rating":"PG", "runtime":"1 hr. 33 min."},
+            {"name":"Venom: Let There Be Carnage", "rating":"PG13", "runtime":"1 hr. 30 min."},
+            {"name":"Dear Evan Hansen", "rating":"PG13", "runtime":"2 hr. 17 min."},
+            {"name":"The Eyes of Tammy Faye", "rating":"PG13", "runtime":"2 hr. 6 min."},
+            {"name":"Shang-Chi and the Legend of the Ten Rings", "rating":"PG13", "runtime":"2 hr. 12min."},
+            {"name":"Free Guy", "rating":"PG13", "runtime":"1 hr. 55 min."}
+        ]; 
+
+        movie[1].name;
+    </script>
     <div class="sidenav">
         <a href="/index.html">Home Page</a>
         <a href="/assignment1.html">Assignment 1</a>
@@ -35,9 +63,35 @@
         <a href="/comingsoon.html">Assignment 16</a>
     </div>
     <div class="content">
+        
         <h1>Assignment 6: JSON</h1>
         <a href="https://roneaglin.online/cop4813/home/assignments/assignment-6/">Instructions</a>
-        <hr>    </div>
+        <hr>  
+        <div id="table">
+        <script>
+            var movie = [
+            {"name":"Spirited Away", "rating":"PG", "runtime":"2 hr. 15 min."},
+            {"name":"The Many Saints of Newark", "rating":"R", "runtime":"2 hr. 0 min."},
+            {"name":"The Addams Family 2", "rating":"PG", "runtime":"1 hr. 33 min."},
+            {"name":"Venom: Let There Be Carnage", "rating":"PG13", "runtime":"1 hr. 30 min."},
+            {"name":"Dear Evan Hansen", "rating":"PG13", "runtime":"2 hr. 17 min."},
+            {"name":"The Eyes of Tammy Faye", "rating":"PG13", "runtime":"2 hr. 6 min."},
+            {"name":"Shang-Chi and the Legend of the Ten Rings", "rating":"PG13", "runtime":"2 hr. 12min."},
+            {"name":"Free Guy", "rating":"PG13", "runtime":"1 hr. 55 min."}
+        ]; 
+
+        var output = "The following is a list of movies, their rating, and runtime</br></br>" +
+        "<table border='1'>"; // <tr><td>Movie</td><td>Rating</td><td>Runtime</td>;
+
+        for (i = 0; i < movie.length; i++){
+            output +="<tr><td>" + movie[i].name + "</td><td>" + movie[i].rating + "</td><td>" + movie[i].runtime + "</td>";
+        }
+            
+        document.getElementById("table").innerHTML = output;
+
+        </script>
+        </div>
+    </div>
     <div class="footer">
         Created by Elliot Culbertson
     </div>
