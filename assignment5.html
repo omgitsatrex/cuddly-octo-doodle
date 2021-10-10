@@ -9,6 +9,9 @@
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
     <script> // Everything here is what was created in JSFiddle. I am unaware why the spirograph works within JSFiddle but not the browser.
+
+$(window).load(function(){
+
 var t = 0;
 var c = document.getElementById("myCanvas");
 var R = 200;
@@ -70,6 +73,8 @@ CanvasRenderingContext2D.prototype.clear =
       this.restore();
     }           
 };
+
+});
     </script>
 </head>
 <body>
