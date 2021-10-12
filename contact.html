@@ -1,11 +1,225 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jquery-ui.js"></script>
+
+    <title>Assignment 7</title>
+    <link rel="stylesheet" type="text/css" href="css/assign7.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <style>
+        #header {
+            background: #444;
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            margin-top: 10px;
+            margin-left: 8px;
+            background-color: silver;
+            color: black;
+            box-shadow: 3px 3px 0 rgb(255, 255, 51);
+        }
+
+        #deal {
+            margin-left: 1.5em;
+        }
+        .container{
+            text-align: center;
+        }
+
+        p,
+        h1 {
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Contact page</h1>
+    <header>
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+        <nav class="menu">
+            <div class="menu-branding">
+                <div class="portrait"></div>
+
+            </div>
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        About Me
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="work.html" class="nav-link">
+                        My Work
+                    </a>
+                </li>
+                <li class="nav-item current">
+                    <a href="contact.html" class="nav-link">
+                        How To Reach Me
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="header">
+        <a href="work.html" class="previous">&laquo; Previous</a>
+    </div><br>
+    <div class="text">
+        <h1>Card Dealing Drag & Drop</h1>
+        <p>Click "Deal Card" button to be dealt cards. </p>
+        <p>To discard the cards that you don't want, </p>
+        <p> drag and drop them in the trash. </p>
+    </div>
+    <div class="container">
+        <input class="previous" type="button" value="Deal Card" id="deal">
+        <br>
+        <br>
+        <div class="icon-trash" id="drop" style="float: left">
+            <div class="trash-lid" style="background-color: yellow"></div>
+            <div class="trash-container" style="background-color: yellow"></div>
+            <div class="trash-line-1"></div>
+            <div class="trash-line-2"></div>
+            <div class="trash-line-3"></div>
+
+        </div>
+    </div>
+    <script>
+        
+// Card drag and drop
+$(init);
+
+function init(){
+    $('.icon-trash').droppable({
+        drop: handleDropEvent
+    });
+}
+
+$("#deal").click(() => {
+  dealCard(randomCard());
+});
+
+var cardsInDeck = [];
+var numberOfCardsInDeck = 52;
+cardsInDeck[0] = "h1";
+cardsInDeck[1] = "h2";
+cardsInDeck[2] = "h3";
+cardsInDeck[3] = "h4";
+cardsInDeck[4] = "h5";
+cardsInDeck[5] = "h6";
+cardsInDeck[6] = "h7";
+cardsInDeck[7] = "h8";
+cardsInDeck[8] = "h9";
+cardsInDeck[9] = "h10";
+cardsInDeck[10] = "h11";
+cardsInDeck[11] = "h12";
+cardsInDeck[12] = "h13";
+cardsInDeck[13] = "d1";
+cardsInDeck[14] = "d2";
+cardsInDeck[15] = "d3";
+cardsInDeck[16] = "d4";
+cardsInDeck[17] = "d5";
+cardsInDeck[18] = "d6";
+cardsInDeck[19] = "d7";
+cardsInDeck[20] = "d8";
+cardsInDeck[21] = "d9";
+cardsInDeck[22] = "d10";
+cardsInDeck[23] = "d11";
+cardsInDeck[24] = "d12";
+cardsInDeck[25] = "d13";
+cardsInDeck[26] = "s1";
+cardsInDeck[27] = "s2";
+cardsInDeck[28] = "s3";
+cardsInDeck[29] = "s4";
+cardsInDeck[30] = "s5";
+cardsInDeck[31] = "s6";
+cardsInDeck[32] = "s7";
+cardsInDeck[33] = "s8";
+cardsInDeck[34] = "s9";
+cardsInDeck[35] = "s10";
+cardsInDeck[36] = "s11";
+cardsInDeck[37] = "s12";
+cardsInDeck[38] = "s13";
+cardsInDeck[39] = "c1";
+cardsInDeck[40] = "c2";
+cardsInDeck[41] = "c3";
+cardsInDeck[42] = "c4";
+cardsInDeck[43] = "c5";
+cardsInDeck[44] = "c6";
+cardsInDeck[45] = "c7";
+cardsInDeck[46] = "c8";
+cardsInDeck[47] = "c9";
+cardsInDeck[48] = "c10";
+cardsInDeck[49] = "c11";
+cardsInDeck[50] = "c12";
+cardsInDeck[51] = "c13";
+
+function dealCard(i) {
+  if (numberOfCardsInDeck == 0) return false;
+  var card = document.createElement("img");
+  card.src = "img/cards/" + cardsInDeck[i] + ".jpeg";
+
+  card.id = cardsInDeck[i];
+  card.alt = "Card " + cardsInDeck[i];
+  card.width = 80;
+  card.height = 120;
+  document.body.appendChild(card);
+
+  $(card).draggable();
+  removeCard(i);
+}
+
+function randomCard() {
+  return Math.floor(Math.random() * numberOfCardsInDeck);
+}
+
+function removeCard(c) {
+  // simply make every higher numbered card move down 1
+  for (j = c; j <= numberOfCardsInDeck - 2; j++) {
+    cardsInDeck[j] = cardsInDeck[j + 1];
+  }
+  numberOfCardsInDeck--;
+}
+
+function handleDropEvent(event, ui) {
+  var draggable = ui.draggable;
+//   $("#drop").html(
+//     'Playing card with ID "' + draggable.attr("id") + '" was discarded!'
+//   );
+  hideImage(draggable);
+}
+
+function hideImage(card) {
+  $(card).hide();
+}
+    </script>
 </body>
 </html>

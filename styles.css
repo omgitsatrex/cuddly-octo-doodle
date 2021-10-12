@@ -104,3 +104,12 @@ body {
     #sddm div a:hover
     {	background: #49A3FF;
       color: #FFF}
+
+/* assignment 7 styles */
+
+.drop {
+  float: left;
+  width: 400px;
+  height: 200px;
+  background-color: #BC5347;
+}
