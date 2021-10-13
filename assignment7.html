@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="jquery-ui.js"></script>
-    <script>
+    
+    <!--script>
     //$(window).load(function(){
         $(init);
 
@@ -22,7 +23,7 @@
         function init() {
             $('.drop').droppable( {
                 drop: handleDropEvent
-        } );
+        } );}
         
         var cardsInDeck = new Array();
         var numberOfCardsInDeck = 52;
@@ -85,7 +86,7 @@
             var img = document.createElement("img");
             img.src = "cards/" + cardsInDeck[i] + ".png";
 
-            document.body.appendChild(img);
+            document.getElementById("content").appendChild(img);
             removeCard(i);
         }
 
@@ -102,9 +103,10 @@
             }
             numberOfCardsInDeck--;
         }
-}
+
     //});
-    </script>
+    </script-->
+
 </head>
 <body>
     <div class="sidenav">
@@ -126,11 +128,12 @@
         <a href="/comingsoon.html">Assignment 15</a>
         <a href="/comingsoon.html">Assignment 16</a>
     </div>
-    <div class="content">
+    <div class="content" id="content">
         <div id="output">before
             <input type="button" value="Deal Card" id="deal" />
             <!--img src="cards/6_of_clubs.png" alt="6 of clubs"-->
         </div>
+        <div id='drop' class='drop'>Drop Here</div>
     </div>
     <div class="footer">
         Created by Elliot Culbertson
@@ -141,5 +144,120 @@
         }); //did this work?
     </script-->
     
+    <script>
+        //$(window).load(function(){
+        
+
+        /*function init(){
+            document.getElementById("output").innerHTML = "after";
+        }*/
+        
+        
+        
+        $('#deal').click(function () {
+            dealCard(randomCard());
+        });
+
+        var cardsInDeck = new Array();
+        var numberOfCardsInDeck = 52;
+
+        cardsInDeck[0] = "2_of_clubs";
+        cardsInDeck[1] = "2_of_diamonds";
+        cardsInDeck[2] = "2_of_hearts";
+        cardsInDeck[3] = "2_of_spades";
+        cardsInDeck[4] = "3_of_clubs";
+        cardsInDeck[5] = "3_of_diamonds";
+        cardsInDeck[6] = "3_of_hearts";
+        cardsInDeck[7] = "3_of_spades";
+        cardsInDeck[8] = "4_of_clubs";
+        cardsInDeck[9] = "4_of_diamonds";
+        cardsInDeck[10] = "4_of_hearts";
+        cardsInDeck[11] = "4_of_spades";
+        cardsInDeck[12] = "5_of_clubs";
+        cardsInDeck[13] = "5_of_diamonds";
+        cardsInDeck[14] = "5_of_hearts";
+        cardsInDeck[15] = "5_of_spades";
+        cardsInDeck[16] = "6_of_clubs";
+        cardsInDeck[17] = "6_of_diamonds";
+        cardsInDeck[18] = "6_of_hearts";
+        cardsInDeck[19] = "6_of_spades";
+        cardsInDeck[20] = "7_of_clubs";
+        cardsInDeck[21] = "7_of_diamonds";
+        cardsInDeck[22] = "7_of_hearts";
+        cardsInDeck[23] = "7_of_spades";
+        cardsInDeck[24] = "8_of_clubs";
+        cardsInDeck[25] = "8_of_diamonds";
+        cardsInDeck[26] = "8_of_hearts";
+        cardsInDeck[27] = "8_of_spades";
+        cardsInDeck[28] = "9_of_clubs";
+        cardsInDeck[29] = "9_of_diamonds";
+        cardsInDeck[30] = "9_of_hearts";
+        cardsInDeck[31] = "9_of_spades";
+        cardsInDeck[32] = "10_of_clubs";
+        cardsInDeck[33] = "10_of_diamonds";
+        cardsInDeck[34] = "10_of_hearts";
+        cardsInDeck[35] = "10_of_spades";
+        cardsInDeck[36] = "ace_of_clubs";
+        cardsInDeck[37] = "ace_of_diamonds";
+        cardsInDeck[38] = "ace_of_hearts";
+        cardsInDeck[39] = "ace_of_spades";
+        cardsInDeck[40] = "jack_of_clubs";
+        cardsInDeck[41] = "jack_of_diamonds";
+        cardsInDeck[42] = "jack_of_hearts";
+        cardsInDeck[43] = "jack_of_spades";
+        cardsInDeck[44] = "king_of_clubs";
+        cardsInDeck[45] = "king_of_diamonds";
+        cardsInDeck[46] = "king_of_hearts";
+        cardsInDeck[47] = "king_of_spades";
+        cardsInDeck[48] = "queen_of_clubs";
+        cardsInDeck[49] = "queen_of_diamonds";
+        cardsInDeck[50] = "queen_of_hearts";
+        cardsInDeck[51] = "queen_of_spades";
+        
+        function dealCard(i) {
+            if (numberOfCardsInDeck == 0) return false;
+            var img = document.createElement("img");
+            img.src = "cards/" + cardsInDeck[i] + ".png";
+            img.id = cardsInDeck[i];
+            img.width = 80;
+            img.height = 120;
+
+            document.getElementById("content").appendChild(img);
+            removeCard(i);
+
+            $(img).draggable();
+        }
+
+        function randomCard() {
+            return Math.floor(Math.random() * numberOfCardsInDeck);  
+        }
+
+        function removeCard(c)
+        {
+            // simply make every higher numbered card move down 1
+            for (j=c; j <= numberOfCardsInDeck - 2; j++)
+            {
+                cardsInDeck[j] = cardsInDeck[j+1];
+            }
+            numberOfCardsInDeck--;
+        }
+        
+        $(init);
+
+        function init() {
+            $('.drop').droppable( {
+                drop: handleDropEvent
+        } );}
+
+        function handleDropEvent( event, ui ) {
+            var draggable = ui.draggable;
+            $('#drop').html( 'The card with ID "' + draggable.attr('id') + '" was dropped onto me!' );
+            
+        }
+                //
+
+        //});
+    </script>
+
 </body>
 </html>
