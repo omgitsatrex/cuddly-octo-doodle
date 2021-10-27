@@ -59,10 +59,28 @@
     </script>
 </head>
 <body>
-    
+    <div class="sidenav">
+        <a href="/index.html">Home Page</a>
+        <a href="/assignment1.html">Assignment 1</a>
+        <a href="/assignment2.html">Assignment 2</a>
+        <a href="/assignment3.html">Assignment 3</a>
+        <a href="/assignment4.html">Assignment 4</a>
+        <a href="/assignment5.html">Assignment 5</a>
+        <a href="/assignment6.html">Assignment 6</a>
+        <a href="/assignment7.html">Assignment 7</a>
+        <a href="/comingsoon.html">Assignment 8</a>
+        <a href="/assignment9.html">Assignment 9</a>
+        <a href="/comingsoon.html">Assignment 10</a>
+        <a href="/comingsoon.html">Assignment 11</a>
+        <a href="/comingsoon.html">Assignment 12</a>
+        <a href="/comingsoon.html">Assignment 13</a>
+        <a href="/comingsoon.html">Assignment 14</a>
+        <a href="/comingsoon.html">Assignment 15</a>
+        <a href="/comingsoon.html">Assignment 16</a>
+    </div>
     <div class="content">
         <div id='position'>position</div>
-        <p><button id="go">Stop </button></p>
+        <p>Click on the soccer ball to make to stop</p>
         <img src="http://fc04.deviantart.net/images3/i/2004/099/f/f/Green_Grass___Perspective.jpg" width='900' height='500'/>
         <div class='ball'>
             <img id='ball' src="http://www.freestockphotos.biz/pictures/15/15872/Illustration+of+a+soccer+ball.png" width='100' height='100' />
@@ -75,48 +93,49 @@
 <script>
     var timerInterval = 100;
 
-var timer = window.setInterval(function() { ballTimer() }, 
-                            timerInterval);  
+    var timer = window.setInterval(function() { ballTimer() }, 
+                                timerInterval);  
 
-$( "#go" ).click(function() {
-window.clearInterval(timer);
-});
+    $( ".ball" ).click(function() {
+    window.clearInterval(timer);
+    });
 
-function ballTimer()
-{
-moveBall($('.ball'));   
-}
-
-function moveBall(obj)
-{
-    var left = obj.offset().left;
-    var top = obj.offset().top;
-    var moveDuration = 50;
-    $('#position').html('left:' + left  + ' top:' + top);
-    
-    if ((left <= 450)&&(top<=100))
+    function ballTimer()
     {
-    obj.animate({ "left": "+=10px" }, moveDuration );
-        return;
+    moveBall($('.ball'));   
     }
 
-    if ((left >= 450)&&(top<=250))
+    function moveBall(obj)
     {
-    obj.animate({ "top": "+=10px" }, moveDuration );
-        return;
-    }
-    if ((left >= 250)&&(top>=250))
-    {
-    obj.animate({ "left": "-=10px" }, moveDuration );
-        return;
-    }
-    if ((left<=250)&&(top>=100))
-    {
-    obj.animate({ "top": "-=10px" }, moveDuration );
-    }
+        var left = obj.offset().left;
+        var top = obj.offset().top;
+        var moveDuration = 50;
+        $('#position').html('left:' + left  + ' top:' + top);
+        
+        if((left>=350)&&(left<450)&&(top<200))
+        {
+        obj.animate({ "left": "+=10px","top": "+=10px" }, moveDuration );
+            return;
+        }
 
-    
-}
+        if((top>=200)&&(top<300)&&(left>350))
+        {
+        obj.animate({ "top": "+=10px","left": "-=10px" }, moveDuration );
+            return;
+        }
+        
+        if((left<=350)&&(left>250)&&(top>200))
+        {
+        obj.animate({ "left": "-=10px","top": "-=10px" }, moveDuration );
+            return;
+        }
+        
+        
+        {
+        obj.animate({ "top": "-=10px","left": "+=10px" }, moveDuration );
+        }
+        
+    }
 </script>
 </html>
 
@@ -142,6 +161,35 @@ function moveBall(obj)
     </div>
     
 
+function moveBall(obj)
+    {
+        var left = obj.offset().left;
+        var top = obj.offset().top;
+        var moveDuration = 50;
+        $('#position').html('left:' + left  + ' top:' + top);
+        
+        if ((left <= 450)&&(top<=100))
+        {
+        obj.animate({ "left": "+=10px" }, moveDuration );
+            return;
+        }
 
+        if ((left >= 450)&&(top<=250))
+        {
+        obj.animate({ "top": "+=10px" }, moveDuration );
+            return;
+        }
+        if ((left >= 250)&&(top>=250))
+        {
+        obj.animate({ "left": "-=10px" }, moveDuration );
+            return;
+        }
+        if ((left<=250)&&(top>=100))
+        {
+        obj.animate({ "top": "-=10px" }, moveDuration );
+        }
+
+        
+    }
 
 -->
