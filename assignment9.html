@@ -7,8 +7,55 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js">
     $('.body').load(function(){
+        /////////
+        var timerInterval = 100;
 
+        var timer = window.setInterval(function() { ballTimer() }, 
+                                    timerInterval);  
+
+        $( "#go" ).click(function() {
+        window.clearInterval(timer);
+        });
+
+        function ballTimer()
+        {
+        moveBall($('.ball'));   
+        }
+
+        function moveBall(obj)
+        {
+            var left = obj.offset().left;
+            var top = obj.offset().top;
+            var moveDuration = 50;
+            $('#position').html('left:' + left  + ' top:' + top);
+            
+            if ((left <= 250)&&(top<=100))
+            {
+            obj.animate({ "left": "+=10px" }, moveDuration );
+                return;
+            }
+
+            if ((left >= 250)&&(top<=250))
+            {
+            obj.animate({ "top": "+=10px" }, moveDuration );
+                return;
+            }
+            if ((left >= 50)&&(top>=250))
+            {
+            obj.animate({ "left": "-=10px" }, moveDuration );
+                return;
+            }
+            if ((left<=50)&&(top>=100))
+            {
+            obj.animate({ "top": "-=10px" }, moveDuration );
+            }
+
+            
+        }
+        /////////
     });
+
+    ///////////
     </script>
 </head>
 <body>
@@ -34,7 +81,7 @@
     <div class="content">
         <div id='position'>position</div>
         <p><button id="go">Stop </button></p>
-        <img src="http://fc04.deviantart.net/images3/i/2004/099/f/f/Green_Grass___Perspective.jpg" />
+        <img src="http://fc04.deviantart.net/images3/i/2004/099/f/f/Green_Grass___Perspective.jpg" width='900' height='500'/>
         <div class='ball'>
             <img id='ball' src="http://www.freestockphotos.biz/pictures/15/15872/Illustration+of+a+soccer+ball.png" width='100' height='100' />
         </div>
