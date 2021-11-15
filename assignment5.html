@@ -28,7 +28,7 @@
     </div>
     <div class="content">
         <button onclick="doDrawing();">Start Drawing</button>
-        <button onclick="stopDrawing();">Stop Drawing</button>
+        <!-- <button onclick="stopDrawing();">Stop Drawing</button> -->
         <canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
         Your browser does not support the HTML5 canvas tag.</canvas>
     </div>
@@ -59,7 +59,7 @@ function doDrawing() {
     
     // Initial x and y
     var x = 320;
-    var y = 170;
+    var y = 174;
 
     // Start the Drawing
     ctx.beginPath();
@@ -68,11 +68,11 @@ function doDrawing() {
       
     //Use the timer to create drawing
     var interval = setInterval(function(){
-    timesRun += 1;
+    timesRun += 10;
     if(timesRun === -1){
         clearInterval(interval); }
         
-    drawCircle();}, 20); 
+    drawCircle();}, 2); //adjusts speed
     
 }
 function drawCircle()
