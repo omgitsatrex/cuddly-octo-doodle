@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript"> // Everything here is what was created in JSFiddle. I am unaware why the spirograph works within JSFiddle but not the browser.
+
+$(window).load(function(){
+
+var t = 0;
+var c = document.getElementById("myCanvas");
+var R = 200;
+var r = 1;
+var O = 40;
+var ctx = c.getContext("2d");
+
+
+function doDrawing() {
+    t = 0;
+    c = document.getElementById("myCanvas"); //I added this line in case the website was loading the script before the body
+    ctx = c.getContext("2d"); //I added this line in case the website was loading the script before the body
+
+    // Clear the Canvas
+    ctx.clear();
+    
+    // Create a random color
+    var timesRun = 0;
+    var color =  '#'+Math.floor(Math.random()*16777215).toString(16);
+    
+    // Initial x and y
+    var x = 500;
+    var y = 250;
+
+    // Start the Drawing
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.moveTo(x,y);
+      
+    //Use the timer to create drawing
+    var interval = setInterval(function(){
+    timesRun += 1;
+    if(timesRun === -1){
+        clearInterval(interval); }
+        
+    drawCircle();}, 20); 
+    
+}
+function drawCircle()
+{
+  t += 0.1;
+  x = (R+r)*Math.cos(t) - (r+O)*Math.cos(((R+r)/r)*t) + 250; //x = Math.floor(R+R*Math.cos(t));
+  y = (R+r)*Math.sin(t) - (r+O)*Math.sin(((R+r)/r)*t) + 250; //y = Math.floor(R+R*Math.sin(t));
+
+  ctx.lineTo(x,y);  
+  ctx.stroke();
+}
+
+CanvasRenderingContext2D.prototype.clear = 
+  CanvasRenderingContext2D.prototype.clear || function (preserveTransform) {
+    if (preserveTransform) {
+      this.save();
+      this.setTransform(1, 0, 0, 1, 0, 0);
+    }
+
+    this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    if (preserveTransform) {
+      this.restore();
+    }           
+};
+
+});
+    </script>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="/index.html">Home Page</a>
+        <a href="/assignment1.html">Assignment 1</a>
+        <a href="/assignment2.html">Assignment 2</a>
+        <a href="/assignment3.html">Assignment 3</a>
+        <a href="/assignment4.html">Assignment 4</a>
+        <a href="/assignment5.html">Assignment 5</a>
+        <a href="/assignment6.html">Assignment 6</a>
+        <a href="/assignment7.html">Assignment 7</a>
+        <a href="/comingsoon.html">Assignment 8</a>
+        <a href="/assignment9.html">Assignment 9</a>
+        <a href="/comingsoon.html">Assignment 10</a>
+        <a href="/comingsoon.html">Assignment 11</a>
+        <a href="/comingsoon.html">Assignment 12</a>
+        <a href="/comingsoon.html">Assignment 13</a>
+        <a href="/comingsoon.html">Assignment 14</a>
+        <a href="/comingsoon.html">Assignment 15</a>
+        <a href="/comingsoon.html">Assignment 16</a>
+    </div>
+    <div class="content">
+        <h1>Assignment 5: Drawing on a Canvas</h1>
+        <a href="https://roneaglin.online/cop4813/home/assignments/assignment-5/">Instructions</a>
+        <hr>
+        <a href="https://jsfiddle.net/omgitsatrex/nL2qf6pr/">JSFiddle</a>
+        <button onclick="doDrawing();">Start Drawing</button><br>
+        <!--button onclick="stopDrawing();">Stop Drawing</button><br-->
+        <canvas id="myCanvas" width="500" height="500" style="border:5px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+    <div class="footer">
+        Created by Elliot Culbertson
+    </div>
+</body>
+</html>
+
