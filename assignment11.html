@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranium23-H5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="./index.html">Home Page</a>
+        <a href="./assignment1.html">Assignment 1</a>
+        <a href="./assignment2.html">Assignment 2</a>
+        <a href="./assignment3.html">Assignment 3</a>
+        <a href="./assignment4.html">Assignment 4</a>
+        <a href="./assignment5.html">Assignment 5</a>
+        <a href="./assignment6.html">Assignment 6</a>
+        <a href="./assignment7.html">Assignment 7</a>
+        <a href="./comingsoon.html">Assignment 8</a>
+        <a href="./assignment9.html">Assignment 9</a>
+        <a href="./comingsoon.html">Assignment 10</a>
+        <a href="./assignment11.html">Assignment 11</a>
+        <a href="./comingsoon.html">Assignment 12</a>
+        <a href="./comingsoon.html">Assignment 13</a>
+        <a href="./comingsoon.html">Assignment 14</a>
+        <a href="./comingsoon.html">Assignment 15</a>
+        <a href="./project1.html">Project</a>
+    </div>
+    <div class="content">
+        <h1>
+            B.A.S. Supervision and Management-Hospitality Concentration
+            </h1>
+            <br/>
+            If you have taken a class in this list - or an equivalent to the course, then click the checkbox. Available courses will automatically be enabled.
+            <br/>
+            <div id="box"></div>
+            
+    </div>
+    <div class="footer">
+        Created by Elliot Culbertson
+    </div>
+    <script>
+        $(document).ready(function() {
+  // executes when HTML-Document is loaded and DOM is ready
+  createList();
+});
+
+var courselist = [{
+  "Course": "ENC1101",
+  "Name": "Introduction to Composition"
+}, {
+  "Course": "GEB3213",
+  "Name": "Business Writing",
+  "PreReq": ["ENC1101"]
+}, {
+  "Course": "HFT4809",
+  "Name": "Management of the Foodservice Industry"
+}, {
+  "Course": "BUL3130",
+  "Name": "Legal, Ethical, and Social Aspects of Business",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "MAC1105",
+  "Name": "College Algebra"
+}, {
+  "Course": "ACG3024",
+  "Name": "Accounting for Non-Financial Majors",
+  "PreReq": ["MAC1105"]
+}, {
+  "Course": "HFT4064",
+  "Name": "Bar and Beverage Management",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "MAN3240",
+  "Name": "Organizational Behavior",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "MAN3353",
+  "Name": "Management Theory and Practices",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "CGS2100",
+  "Name": "Microcomputer Applications"
+}, {
+  "Course": "ISM4011",
+  "Name": "Introduction to Management Information Systems",
+  "PreReq": ["GEB3213", "CGS2100"]
+}, {
+  "Course": "HFT4277",
+  "Name": "Club Management",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "MAN4120",
+  "Name": "Leadership Challenges and Supervision",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "GEB4891",
+  "Name": "Strategic Management and Decision Making",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "MAN4504",
+  "Name": "Operational Decision Making",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "HFT3373",
+  "Name": "Event Design, Production and Technology",
+  "PreReq": ["GEB3213"]
+}, {
+  "Course": "HFT3700",
+  "Name": "Tourism Management"
+}]
+
+function createList() {
+
+  for (var i = 0; i < courselist.length; i++) {
+
+    var _disabled = true;
+    if (courselist[i].PreReq == null) {
+      _disabled = false;
+    }
+
+    addCheckbox(courselist[i].Name, courselist[i].Course, _disabled)
+  }
+}
+
+function addCheckbox(_name, _id, _disabled) {
+  var container = $('#box');
+
+
+  $('<input />', {
+    type: 'checkbox',
+    id: _id,
+    value: _name,
+    disabled: _disabled,
+    class: 'checkbox'
+  }).appendTo(container);
+
+  $('<label />', {
+    'for': _id,
+    text: _id + ' ' + _name
+  }).appendTo(container);
+
+  container.append('<br/>');
+}
+
+$("#box").delegate("input", "click", function() {
+  CC();
+});
+
+function pr(course, index) {
+  // course is the course in question
+
+  var checked = true;
+
+  // preReqArray  is the array of pre-requisites
+  var courseId = course.Course;
+  var preReqArray = course.PreReq;
+
+
+  if (preReqArray == null) return;
+ 
+  // Goes through the list of pre-requisites
+  // to see if each one is met if any are not met
+  // then pre-requisites are not met
+
+  for (var i = 0; i < preReqArray.length; i++) {
+    if (!isChecked(preReqArray[i])) {
+      checked = false;
+    }
+  }
+  if (checked) Enable(courseId)
+  else Disable(courseId);
+}
+
+function CC() {
+  // Check courses
+  courselist.forEach(pr);
+}
+
+function isChecked(item) {
+  return (document.getElementById(item).checked == true);
+}
+
+function Enable(selection) {
+  document.getElementById(selection).disabled = false;
+}
+
+function Disable(selection) {
+  document.getElementById(selection).disabled = true;
+}
+
+    </script>
+</body>
+</html>
