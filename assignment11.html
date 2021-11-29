@@ -28,6 +28,14 @@
         <a href="./project1.html">Project</a>
     </div>
     <div class="content">
+        <h1>Assignment 11: Programming the Advisor</h1>
+        <a href="https://roneaglin.online/cop4813/home/assignments/assignment-11/">Instructions</a>
+        <hr>  
+        <p>CHANGES MADE</p>
+        <ul>
+          <li>Switched program to BAS</li>
+          <li>Included an OR checker for pre-requisiites</li>
+        </ul>
         <h1>
             B.A.S. Supervision and Management-Hospitality Concentration
             </h1>
@@ -64,9 +72,15 @@ var courselist = [{
   "Course": "MAC1105",
   "Name": "College Algebra"
 }, {
+  "Course": "ACG2021",
+  "Name": "Principles of Financial Accounting"
+}, {
+  "Course": "STA2023",
+  "Name": "Elementary Statistics"
+}, {
   "Course": "ACG3024",
   "Name": "Accounting for Non-Financial Majors",
-  "PreReq": ["MAC1105"]
+  "PreReq": [["MAC1105", "ACG2021", "STA2023"]]
 }, {
   "Course": "HFT4064",
   "Name": "Bar and Beverage Management",
@@ -165,7 +179,23 @@ function pr(course, index) {
   // then pre-requisites are not met
 
   for (var i = 0; i < preReqArray.length; i++) {
-    if (!isChecked(preReqArray[i])) {
+
+    if (typeof preReqArray[i] === 'object'){ // Checks if item contains OR pre-reqs
+      var orCheck = false;
+      for(var j = 0; j < preReqArray[i].length; j++){
+        if (isChecked(preReqArray[i][j])){
+          orCheck = true;
+        }
+        // else if (j == preReqArray[i].length){
+        //   checked = false;
+        // }
+      }
+      if(!orCheck){
+        checked = false;
+      }
+    }
+    
+    else if (!isChecked(preReqArray[i])) {
       checked = false;
     }
   }
